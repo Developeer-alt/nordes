@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre a Nordes Studio - Nordes Studio</title>
+<link rel="stylesheet" href="../assets/style/sobre.css">
+<link rel="stylesheet" href="../assets/global/global.css">
+<link rel="stylesheet" href="../assets/global/scroll.css">
+ <link rel="shortcut icon" href="../assets/images/icons/fav.png" type="image/x-icon" />
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="home.html" class="logo">
+            <img src="../assets/images/icons/logo.png" alt="Nordes Studio">
+            <span class="logo-text">NORDES STUDIO</span>
+        </a>
+        <div class="nav-actions">
+            <a href="home.html">Home</a>
+            <a href="categorias.html">Categorias</a>
+            <a href="perfil.html" id="nav-profile">Minha Conta</a>
+        </div>
+    </nav>
+</header>
+
+<main class="about-section">
+    <div class="about-header">
+        <h1>Nossa História</h1>
+        <p class="p" style="color: var(--text-muted);">Conheça a trajetória da Nordes Studio no universo editorial</p>
+    </div>
+
+    <div class="about-content">
+        <p>A Nordes Studio nasceu da paixão por contar histórias que transcendem fronteiras. Fundada com o objetivo de dar voz a novos talentos e trazer obras inovadoras para o mercado brasileiro, nos tornamos uma referência em publicações de alta qualidade.</p>
+        <p>Especializada em mangás, light novels e literatura contemporânea, nossa editora busca constantemente o equilíbrio entre a arte visual deslumbrante e narrativas envolventes que tocam o coração dos leitores.</p>
+        <p>Nosso compromisso é com a excelência editorial, desde a tradução cuidadosa até o design gráfico de ponta, garantindo que cada obra seja uma experiência única para quem a lê.</p>
+
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>Missão</h3>
+                <p>Publicar obras que inspirem, emocionem e conectem pessoas através da criatividade.</p>
+            </div>
+            <div class="about-card">
+                <h3>Visão</h3>
+                <p>Ser a principal ponte entre autores independentes e o público leitor apaixonado.</p>
+            </div>
+            <div class="about-card">
+                <h3>Valores</h3>
+                <p>Qualidade, inovação, respeito ao autor e paixão pela cultura pop e literária.</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-links">
+        <a href="sobre.html">Sobre a Nordes</a>
+        <a href="termos-de-privacidade.html">Política de Privacidade</a>
+        <a href="termos-de-uso.html">Termos de Uso</a>
+        <a href="contato.html">Contato</a>
+    </div>
+    <p>&copy; 2027 Nordes Studio. Todos os direitos reservados.</p>
+</footer>
+
+<script>
+    // Verificar se o usuário está logado para atualizar o link da conta
+    document.addEventListener('DOMContentLoaded', () => {
+        const user = JSON.parse(localStorage.getItem('nordes_user'));
+        if (user) {
+            const profileLink = document.getElementById('nav-profile');
+            profileLink.innerText = user.firstname || 'Meu Perfil';
+            profileLink.href = 'dashboard.html';
+        }
+    });
+</script>
+</body>
+</html>

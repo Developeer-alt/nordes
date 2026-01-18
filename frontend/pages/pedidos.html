@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Pedidos - Nordes Studio</title>
+<link rel="stylesheet" href="../assets/global/global.css">
+     <link rel="shortcut icon" href="../assets/images/icons/fav.png" type="image/x-icon" />
+    <style>
+        :root {
+            --primary-accent: #009FFF;
+            --secondary-accent: #00d4ff;
+            --text-light: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --bg-dark: #000C1E;
+            --bg-darker: #030013;
+            --card-bg: rgba(42, 47, 74, 0.3);
+            --border-color: rgba(0, 212, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background: var(--bg-darker);
+            color: var(--text-light);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 12, 30, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.8rem 5%;
+            min-height: 65px;
+            display: flex;
+            align-items: center;
+        }
+
+        nav {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 45px;
+            width: 45px;
+        }
+
+        .logo-text {
+            font-weight: 900;
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, #fff, var(--primary-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-actions a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-left: 1.5rem;
+        }
+
+        .orders-container {
+            max-width: 1000px;
+            margin: 120px auto 50px;
+            padding: 0 5%;
+        }
+
+        .central-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .central-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #fff, var(--primary-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .order-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+        }
+
+        .order-card:hover {
+            border-color: var(--primary-accent);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .order-header {
+            padding: 1.5rem 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .order-id {
+            font-weight: 800;
+            color: var(--primary-accent);
+            font-size: 1.1rem;
+        }
+
+        .order-status {
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .status-shipped { background: rgba(0, 159, 255, 0.15); color: var(--secondary-accent); border: 1px solid rgba(0, 159, 255, 0.3); }
+        .status-delivered { background: rgba(0, 255, 136, 0.15); color: #00ff88; border: 1px solid rgba(0, 255, 136, 0.3); }
+        
+        .order-body {
+            padding: 2rem;
+        }
+
+        .order-item {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .item-img {
+            width: 80px;
+            height: 110px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .item-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .order-footer {
+            padding: 1.5rem 2rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-track {
+            padding: 0.7rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: #fff;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .btn-track:hover {
+            background: var(--primary-accent);
+            border-color: var(--primary-accent);
+        }
+
+        .empty-orders {
+            text-align: center;
+            padding: 5rem 2rem;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px dashed var(--border-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="home.html" class="logo">
+            <img src="../assets/images/icons/logo.png" alt="Nordes Studio">
+            <span class="logo-text">NORDES STUDIO</span>
+        </a>
+        <div class="nav-actions">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="perfil.html">Meu Perfil</a>
+        </div>
+    </nav>
+</header>
+
+<main class="orders-container">
+    <div class="central-header">
+        <h1>Meus Pedidos</h1>
+        <p style="color: var(--text-muted);">Acompanhe o histórico de suas aventuras literárias</p>
+    </div>
+
+    <div id="order-list">
+        <!-- Exemplo de Pedido -->
+        <div class="order-card">
+            <div class="order-header">
+                <div>
+                    <span class="order-id">PEDIDO #NS-98745</span>
+                    <span style="color: var(--text-muted); margin-left: 1.5rem;">05/01/2025</span>
+                </div>
+                <span class="order-status status-shipped">Em Transporte</span>
+            </div>
+            <div class="order-body">
+                <div class="order-item">
+                    <div class="item-img">📚</div>
+                    <div class="item-info">
+                        <h4>O Despertar do Norte - Vol. 1</h4>
+                        <p style="color: var(--text-muted);">Quantidade: 1 • Mangá</p>
+                    </div>
+                </div>
+            </div>
+            <div class="order-footer">
+                <div>Total: <strong style="color: var(--secondary-accent); font-size: 1.2rem;">R$ 49,90</strong></div>
+                <a href="#" class="btn-track">Rastrear Pedido</a>
+            </div>
+        </div>
+
+        <div class="order-card">
+            <div class="order-header">
+                <div>
+                    <span class="order-id">PEDIDO #NS-98210</span>
+                    <span style="color: var(--text-muted); margin-left: 1.5rem;">20/12/2024</span>
+                </div>
+                <span class="order-status status-delivered">Entregue</span>
+            </div>
+            <div class="order-body">
+                <div class="order-item">
+                    <div class="item-img">📖</div>
+                    <div class="item-info">
+                        <h4>Crônicas de Nordes</h4>
+                        <p style="color: var(--text-muted);">Quantidade: 1 • Literatura</p>
+                    </div>
+                </div>
+            </div>
+            <div class="order-footer">
+                <div>Total: <strong style="color: var(--secondary-accent); font-size: 1.2rem;">R$ 89,90</strong></div>
+                <a href="#" class="btn-track">Ver Detalhes</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2025 Nordes Studio. Todos os direitos reservados.</p>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const user = JSON.parse(localStorage.getItem('nordes_user'));
+        if (!user) {
+            window.location.href = 'login.html';
+            return;
+        }
+
+        // No futuro, buscar pedidos reais da API:
+        // fetch(`/api/orders?user=${user.email}`).then(res => res.json()).then(data => renderOrders(data));
+    });
+</script>
+</body>
+</html>

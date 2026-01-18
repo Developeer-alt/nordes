@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento - Nordes Studio</title>
+<link rel="stylesheet" href="../assets/global/global.css">
+     <link rel="shortcut icon" href="../assets/images/icons/fav.png" type="image/x-icon" />
+    <style>
+        :root {
+            --primary-accent: #009FFF;
+            --secondary-accent: #00d4ff;
+            --text-light: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --bg-dark: #000C1E;
+            --bg-darker: #030013;
+            --card-bg: rgba(42, 47, 74, 0.3);
+            --border-color: rgba(0, 212, 255, 0.1);
+            --success-color: #00ff88;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background: var(--bg-darker);
+            color: var(--text-light);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 12, 30, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.8rem 5%;
+            min-height: 65px;
+            display: flex;
+            align-items: center;
+        }
+
+        nav {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 45px;
+            width: 45px;
+        }
+
+        .logo-text {
+            font-weight: 900;
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, #fff, var(--primary-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .checkout-container {
+            max-width: 1100px;
+            margin: 120px auto 50px;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 2.5rem;
+            padding: 0 5%;
+        }
+
+        @media (max-width: 900px) {
+            .checkout-container { grid-template-columns: 1fr; }
+        }
+
+        .checkout-main {
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 25px;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .payment-methods {
+            margin-top: 2.5rem;
+        }
+
+        .method-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 1.8rem;
+            border-radius: 15px;
+            margin-bottom: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: 0.3s;
+        }
+
+        .method-card:hover, .method-card.active {
+            border-color: var(--primary-accent);
+            background: rgba(0, 159, 255, 0.08);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .method-card input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--primary-accent);
+        }
+
+        .method-icon {
+            width: 45px;
+            height: 45px;
+            fill: var(--primary-accent);
+        }
+
+        .cart-summary {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 25px;
+            border: 1px solid var(--border-color);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .summary-title {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+        }
+
+        .summary-total {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid var(--border-color);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
+            border: none;
+            border-radius: 12px;
+            color: #fff;
+            font-weight: 800;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 2.5rem;
+            text-transform: uppercase;
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 159, 255, 0.3);
+        }
+
+        #pix-details {
+            display: none;
+            margin-top: 2rem;
+            text-align: center;
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px dashed var(--primary-accent);
+        }
+
+        .qr-placeholder {
+            width: 220px;
+            height: 220px;
+            background: #fff;
+            margin: 0 auto 1.5rem;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="home.html" class="logo">
+            <img src="../assets/images/icons/logo.png" alt="Nordes Studio">
+            <span class="logo-text">NORDES STUDIO</span>
+        </a>
+        <div class="nav-actions">
+            <a href="carrinho.html" style="color: var(--text-light); text-decoration: none;">Voltar ao Carrinho</a>
+        </div>
+    </nav>
+</header>
+
+<main class="checkout-container">
+    <div class="checkout-main">
+        <h1>Finalizar Pagamento</h1>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">Escolha a melhor forma de pagamento para você.</p>
+
+        <div class="payment-methods">
+            <div class="method-card active" onclick="selectMethod('pix')">
+                <input type="radio" name="payment" id="radio-pix" checked>
+                <svg class="method-icon" viewBox="0 0 24 24"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71L12 2z"/></svg>
+                <div>
+                    <strong>PIX</strong>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Aprovação imediata e 5% de desconto.</p>
+                </div>
+            </div>
+
+            <div class="method-card" onclick="selectMethod('card')">
+                <input type="radio" name="payment" id="radio-card">
+                <svg class="method-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+                <div>
+                    <strong>Cartão de Crédito</strong>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Parcele em até 10x sem juros.</p>
+                </div>
+            </div>
+
+            <div class="method-card" onclick="selectMethod('boleto')">
+                <input type="radio" name="payment" id="radio-boleto">
+                <svg class="method-icon" viewBox="0 0 24 24"><path d="M3 4h2v16H3V4zm4 0h1v16H7V4zm3 0h2v16h-2V4zm5 0h1v16h-1V4zm3 0h3v16h-3V4z"/></svg>
+                <div>
+                    <strong>Boleto Bancário</strong>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Aprovação em até 2 dias úteis.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="pix-details" style="display: block;">
+            <p style="margin-bottom: 1.5rem;">Escaneie o QR Code abaixo para pagar:</p>
+            <div class="qr-placeholder">QR CODE PIX</div>
+            <button class="checkout-btn" style="margin-top: 0; width: auto; padding: 0.8rem 2rem; font-size: 0.9rem;">Copiar Código PIX</button>
+        </div>
+    </div>
+
+    <aside class="cart-summary">
+        <h2 class="summary-title">Resumo da Compra</h2>
+        <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="subtotal">R$ 159,80</span>
+        </div>
+        <div class="summary-row">
+            <span>Frete</span>
+            <span style="color: var(--success-color);">Grátis</span>
+        </div>
+        <div class="summary-row" id="discount-row" style="color: var(--primary-accent);">
+            <span>Desconto PIX (5%)</span>
+            <span id="discount-val">- R$ 7,99</span>
+        </div>
+        <div class="summary-row summary-total">
+            <span>Total</span>
+            <span id="total">R$ 151,81</span>
+        </div>
+        <button class="checkout-btn" id="finish-btn">Confirmar Pagamento</button>
+        <p style="font-size: 0.75rem; color: var(--text-muted); text-align: center; margin-top: 1.5rem;">Ambiente 100% seguro e criptografado.</p>
+    </aside>
+</main>
+
+<footer>
+    <p>&copy; 2025 Nordes Studio. Todos os direitos reservados.</p>
+</footer>
+
+<script>
+    function selectMethod(method) {
+        document.querySelectorAll('.method-card').forEach(card => card.classList.remove('active'));
+        document.getElementById(`radio-${method}`).checked = true;
+        document.getElementById(`radio-${method}`).closest('.method-card').classList.add('active');
+        
+        const pixDetails = document.getElementById('pix-details');
+        const discountRow = document.getElementById('discount-row');
+        const totalEl = document.getElementById('total');
+        
+        if (method === 'pix') {
+            pixDetails.style.display = 'block';
+            discountRow.style.display = 'flex';
+            totalEl.innerText = 'R$ 151,81';
+        } else {
+            pixDetails.style.display = 'none';
+            discountRow.style.display = 'none';
+            totalEl.innerText = 'R$ 159,80';
+        }
+    }
+
+    document.getElementById('finish-btn').addEventListener('click', async () => {
+        const btn = document.getElementById('finish-btn');
+        btn.disabled = true;
+        btn.innerText = 'Processando...';
+
+        try {
+            // Simulação de backend
+            await new Promise(resolve => setTimeout(resolve, 2500));
+            
+            alert('Pagamento confirmado com sucesso! Você receberá um e-mail com os detalhes do pedido.');
+            
+            // Limpar carrinho e redirecionar
+            localStorage.removeItem('nordes_cart');
+            window.location.href = 'pedidos.html';
+        } catch (error) {
+            alert('Erro ao processar pagamento.');
+            btn.disabled = false;
+            btn.innerText = 'Confirmar Pagamento';
+        }
+    });
+</script>
+</body>
+</html>

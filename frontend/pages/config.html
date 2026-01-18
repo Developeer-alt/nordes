@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações - Nordes Studio</title><link rel="stylesheet" href="../assets/global/global.css">
+         <link rel="shortcut icon" href="../assets/images/icons/fav.png" type="image/x-icon" />
+    <style>
+        :root {
+            --primary-accent: #009FFF;
+            --secondary-accent: #00d4ff;
+            --text-light: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --bg-dark: #000C1E;
+            --bg-darker: #030013;
+            --card-bg: rgba(42, 47, 74, 0.3);
+            --border-color: rgba(0, 212, 255, 0.1);
+            --danger: #ff4b2b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background: var(--bg-darker);
+            color: var(--text-light);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 12, 30, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.8rem 5%;
+            min-height: 65px;
+            display: flex;
+            align-items: center;
+        }
+
+        nav {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 45px;
+            width: 45px;
+        }
+
+        .logo-text {
+            font-weight: 900;
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, #fff, var(--primary-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .config-container {
+            max-width: 800px;
+            margin: 120px auto 50px;
+            padding: 3rem;
+            background: var(--card-bg);
+            border-radius: 25px;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .config-section {
+            margin-bottom: 3.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .config-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .config-section h2 {
+            font-size: 1.6rem;
+            color: var(--secondary-accent);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .config-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+        }
+
+        .option-info h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.3rem;
+            color: #fff;
+        }
+
+        .option-info p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Toggle Switch */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 55px;
+            height: 28px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: .4s;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px; width: 20px;
+            left: 4px; bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        input:checked + .slider {
+            background-color: var(--primary-accent);
+            border-color: var(--primary-accent);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(25px);
+        }
+
+        .btn-danger {
+            background: rgba(255, 75, 43, 0.1);
+            color: var(--danger);
+            border: 1px solid rgba(255, 75, 43, 0.3);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 1rem;
+        }
+
+        .btn-danger:hover {
+            background: var(--danger);
+            color: #fff;
+        }
+
+        .btn-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            transition: 0.3s;
+        }
+
+        .btn-link:hover {
+            border-color: var(--primary-accent);
+            background: rgba(0, 159, 255, 0.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="home.html" class="logo">
+            <img src="../assets/images/icons/logo.png" alt="Nordes Studio">
+            <span class="logo-text">NORDES STUDIO</span>
+        </a>
+        <div class="nav-actions">
+            <a href="dashboard.html" style="color: var(--text-light); text-decoration: none; margin-left: 1.5rem;">Dashboard</a>
+            <a href="perfil.html" style="color: var(--text-light); text-decoration: none; margin-left: 1.5rem;">Perfil</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div class="config-container">
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <h1 style="font-size: 2.2rem;">Configurações</h1>
+            <p style="color: var(--text-muted);">Gerencie suas preferências de conta e privacidade</p>
+        </div>
+
+        <div class="config-section">
+            <h2>Notificações</h2>
+            <div class="config-option">
+                <div class="option-info">
+                    <h3>E-mails de Promoções</h3>
+                    <p>Receba novidades sobre lançamentos e ofertas exclusivas.</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="config-option">
+                <div class="option-info">
+                    <h3>Atualizações de Pedidos</h3>
+                    <p>Receba notificações sobre o status de entrega dos seus livros.</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="config-section">
+            <h2>Privacidade</h2>
+            <div class="config-option">
+                <div class="option-info">
+                    <h3>Perfil Público</h3>
+                    <p>Permitir que outros leitores vejam sua lista de desejos.</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="config-section">
+            <h2>Segurança</h2>
+            <a href="editar-perfil.html" class="btn-link">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary-accent)" stroke-width="2"><path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>
+                <div>
+                    <h3 style="margin-bottom: 0.2rem;">Alterar Senha</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Mantenha sua conta protegida com uma senha forte.</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="config-section">
+            <h2 style="color: var(--danger);">Zona de Perigo</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">A exclusão da conta é permanente e não pode ser desfeita.</p>
+            <button class="btn-danger" onclick="deleteAccount()">Excluir Minha Conta</button>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2025 Nordes Studio. Todos os direitos reservados.</p>
+</footer>
+
+<script>
+    function deleteAccount() {
+        if (confirm('Tem certeza que deseja excluir sua conta permanentemente? Todos os seus dados e histórico de pedidos serão perdidos.')) {
+            alert('Conta excluída com sucesso. Sentiremos sua falta!');
+            localStorage.removeItem('nordes_user');
+            window.location.href = 'login.html';
+        }
+    }
+</script>
+</body>
+</html>

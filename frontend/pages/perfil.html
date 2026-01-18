@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil - Nordes Studio</title>
+<link rel="stylesheet" href="../assets/global/global.css">
+     <link rel="shortcut icon" href="../assets/images/icons/fav.png" type="image/x-icon" />
+    <style>
+        :root {
+            --primary-accent: #009FFF;
+            --secondary-accent: #00d4ff;
+            --text-light: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --bg-dark: #000C1E;
+            --bg-darker: #030013;
+            --card-bg: rgba(42, 47, 74, 0.3);
+            --border-color: rgba(0, 212, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background: var(--bg-darker);
+            color: var(--text-light);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 12, 30, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.8rem 5%;
+            min-height: 65px;
+            display: flex;
+            align-items: center;
+        }
+
+        nav {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 45px;
+            width: 45px;
+        }
+
+        .logo-text {
+            font-weight: 900;
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, #fff, var(--primary-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-actions a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-left: 1.5rem;
+        }
+
+        .profile-container {
+            max-width: 900px;
+            margin: 120px auto 50px;
+            padding: 3rem;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #fff;
+            box-shadow: 0 0 30px rgba(0, 159, 255, 0.2);
+        }
+
+        .profile-info h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+        }
+
+        .info-card label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-card span {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .profile-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-action {
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
+            color: #fff;
+            border: none;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-action:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="home.html" class="logo">
+            <img src="../assets/images/icons/logo.png" alt="Nordes Studio">
+            <span class="logo-text">NORDES STUDIO</span>
+        </a>
+        <div class="nav-actions">
+            <a href="home.html">Loja</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="#" onclick="logout()">Sair</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div class="profile-container">
+        <div class="profile-header">
+            <div class="profile-avatar" id="user-initials">U</div>
+            <div class="profile-info">
+                <h1 id="user-fullname">Carregando...</h1>
+                <p style="color: var(--text-muted);" id="user-email">email@exemplo.com</p>
+            </div>
+        </div>
+
+        <div class="profile-grid">
+            <div class="info-card">
+                <label>Nome</label>
+                <span id="display-firstname">-</span>
+            </div>
+            <div class="info-card">
+                <label>Sobrenome</label>
+                <span id="display-lastname">-</span>
+            </div>
+            <div class="info-card">
+                <label>Telefone</label>
+                <span id="display-phone">-</span>
+            </div>
+            <div class="info-card">
+                <label>Membro desde</label>
+                <span id="display-member-since">Janeiro 2025</span>
+            </div>
+        </div>
+
+        <div class="profile-actions">
+            <a href="editar-perfil.html" class="btn-action btn-primary">Editar Perfil</a>
+            <a href="config.html" class="btn-action btn-secondary">Configurações</a>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2025 Nordes Studio. Todos os direitos reservados.</p>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const user = JSON.parse(localStorage.getItem('nordes_user'));
+        
+        if (!user) {
+            window.location.href = '../frontend/front-static/publics-pages/log.html';
+            return;
+        }
+
+        // Preencher dados
+        document.getElementById('user-fullname').innerText = `${user.firstname || ''} ${user.lastname || ''}`.trim() || 'Usuário Nordes';
+        document.getElementById('user-email').innerText = user.email;
+        document.getElementById('display-firstname').innerText = user.firstname || '-';
+        document.getElementById('display-lastname').innerText = user.lastname || '-';
+        document.getElementById('display-phone').innerText = user.phone || 'Não informado';
+        
+        const initials = (user.firstname ? user.firstname[0] : '') + (user.lastname ? user.lastname[0] : '');
+        document.getElementById('user-initials').innerText = initials.toUpperCase() || 'U';
+
+        if (user.createdAt) {
+            const date = new Date(user.createdAt);
+            const options = { month: 'long', year: 'numeric' };
+            document.getElementById('display-member-since').innerText = date.toLocaleDateString('pt-BR', options);
+        }
+    });
+
+    function logout() {
+        localStorage.removeItem('nordes_user');
+        window.location.href = 'home.html';
+    }
+</script>
+</body>
+</html>

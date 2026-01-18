@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil - Nordes Studio</title>
+<link rel="stylesheet" href="../assets/global/global.css">
+     <link rel="shortcut icon" href="../assets/images/icons/fav.png" type="image/x-icon" />
+    <style>
+        :root {
+            --primary-accent: #009FFF;
+            --secondary-accent: #00d4ff;
+            --text-light: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --bg-dark: #000C1E;
+            --bg-darker: #030013;
+            --card-bg: rgba(42, 47, 74, 0.3);
+            --border-color: rgba(0, 212, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background: var(--bg-darker);
+            color: var(--text-light);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 12, 30, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.8rem 5%;
+            min-height: 65px;
+            display: flex;
+            align-items: center;
+        }
+
+        nav {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 45px;
+            width: 45px;
+        }
+
+        .logo-text {
+            font-weight: 900;
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, #fff, var(--primary-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-actions a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-left: 1.5rem;
+        }
+
+        .edit-container {
+            max-width: 700px;
+            margin: 120px auto 50px;
+            padding: 3rem;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .central-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .central-header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .avatar-edit {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .avatar-preview {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
+            border-radius: 50%;
+            margin: 0 auto 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            color: #fff;
+            border: 4px solid rgba(255,255,255,0.1);
+            box-shadow: 0 0 20px rgba(0, 159, 255, 0.2);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--primary-accent);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .btn-save {
+            padding: 1.1rem 2rem;
+            background: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            flex: 1;
+        }
+
+        .btn-cancel {
+            padding: 1.1rem 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            flex: 1;
+        }
+
+        .btn-save:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 159, 255, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 600px) {
+            .form-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="home.html" class="logo">
+            <img src="../frontend/front-static/publics-pages/publics-pages-complements/img/logo.png" alt="Nordes Studio">
+            <span class="logo-text">NORDES STUDIO</span>
+        </a>
+        <div class="nav-actions">
+            <a href="perfil.html">Voltar ao Perfil</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div class="edit-container">
+        <div class="central-header">
+            <h1>Editar Perfil</h1>
+            <p style="color: var(--text-muted);">Mantenha seus dados atualizados</p>
+        </div>
+
+        <div class="avatar-edit">
+            <div class="avatar-preview" id="avatar-preview">U</div>
+            <button class="btn-cancel" style="padding: 0.5rem 1.5rem; font-size: 0.8rem; width: auto;">Alterar Foto</button>
+        </div>
+
+        <form id="edit-profile-form">
+            <div class="form-row">
+                <div class="input-group">
+                    <label for="firstname">Nome</label>
+                    <input type="text" id="firstname" required>
+                </div>
+                <div class="input-group">
+                    <label for="lastname">Sobrenome</label>
+                    <input type="text" id="lastname" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" required>
+            </div>
+
+            <div class="input-group" style="margin-bottom: 2.5rem;">
+                <label for="phone">Telefone</label>
+                <input type="tel" id="phone" placeholder="(00) 0 0000-0000">
+            </div>
+
+            <div style="display: flex; gap: 1rem;">
+                <button type="submit" class="btn-save" id="save-btn">Salvar Alterações</button>
+                <a href="perfil.html" class="btn-cancel">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2025 Nordes Studio. Todos os direitos reservados.</p>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const user = JSON.parse(localStorage.getItem('nordes_user'));
+        if (!user) {
+            window.location.href = 'login.html';
+            return;
+        }
+
+        // Preencher formulário
+        document.getElementById('firstname').value = user.firstname || '';
+        document.getElementById('lastname').value = user.lastname || '';
+        document.getElementById('email').value = user.email || '';
+        document.getElementById('phone').value = user.phone || '';
+        
+        const initials = (user.firstname ? user.firstname[0] : '') + (user.lastname ? user.lastname[0] : '');
+        document.getElementById('avatar-preview').innerText = initials.toUpperCase() || 'U';
+    });
+
+    document.getElementById('edit-profile-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = document.getElementById('save-btn');
+        btn.disabled = true;
+        btn.innerText = 'Salvando...';
+
+        const updatedUser = {
+            ...JSON.parse(localStorage.getItem('nordes_user')),
+            firstname: document.getElementById('firstname').value,
+            lastname: document.getElementById('lastname').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value
+        };
+
+        try {
+            // Simulação de API
+            await new Promise(resolve => setTimeout(resolve, 1500));
+            
+            localStorage.setItem('nordes_user', JSON.stringify(updatedUser));
+            alert('Perfil atualizado com sucesso!');
+            window.location.href = 'perfil.html';
+        } catch (error) {
+            alert('Erro ao salvar. Tente novamente.');
+            btn.disabled = false;
+            btn.innerText = 'Salvar Alterações';
+        }
+    });
+</script>
+</body>
+</html>

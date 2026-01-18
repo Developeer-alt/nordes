@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Produto - Nordes Studio</title>
+<link rel="stylesheet" href="../assets/style/produto.css">
+<link rel="stylesheet" href="../assets/global/global.css">
+<link rel="stylesheet" href="../assets/global/scroll.css">
+         <link rel="shortcut icon" href="../assets/images/icons/fav.png" type="image/x-icon" />
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="home.html" class="logo">
+            <img src="../assets/images/icons/logo.png" alt="Nordes Studio" fetchpriority="high">
+            <span class="logo-text">NORDES STUDIO</span>
+        </a>
+        <div class="nav-actions">
+            <a href="home.html">Home</a>
+            <a href="carrinho.html">
+                <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                <span id="cart-counter">Carrinho (0)</span>
+            </a>
+        </div>
+    </nav>
+</header>
+
+<main id="product-content">
+    <div class="product-gallery">
+        <div class="main-image-container">
+            <img id="prod-img" src="livro1.jpg" alt="Produto" class="main-image">
+        </div>
+    </div>
+
+    <div class="product-info">
+        <div class="product-meta">
+            <h1 class="product-title" id="prod-title">Carregando...</h1>
+            <p>por <a href="#" class="author-link" id="prod-author">Nordes Studio</a></p>
+            <div class="rating">
+                <span>★★★★★</span>
+                <span style="color: var(--text-muted)">(4.9 de 5 - 1.240 avaliações)</span>
+            </div>
+        </div>
+
+        <div class="product-price-box">
+            <span class="price-label">Preço de capa: <del>R$ 89,90</del></span>
+            <span class="price-value" id="prod-price">R$ 0,00</span>
+            <span class="price-installments">em até 10x sem juros no cartão</span>
+        </div>
+
+        <div class="product-description">
+            <strong>Sobre este item:</strong><br><br>
+            <span id="prod-desc">Explore uma jornada épica através das páginas desta edição exclusiva da Nordes Studio.</span>
+        </div>
+
+        <div class="action-buttons">
+            <button class="btn-action btn-buy" onclick="buyNow()">Comprar Agora</button>
+            <button class="btn-action btn-cart" onclick="addToCart()">Adicionar ao Carrinho</button>
+        </div>
+    </div>
+</main>
+
+    <section class="product-sections">
+        <div class="section-container">
+            <h2 class="section-title">Informações Adicionais</h2>
+            <div class="additional-info-grid">
+                <div><strong>Formato:</strong> Capa Comum</div>
+                <div><strong>Páginas:</strong> 320</div>
+                <div><strong>Lançamento:</strong> <span id="prod-date">2023</span></div>
+                <div><strong>Disponível:</strong> <span id="prod-stock">Em estoque</span> unidades</div>
+                <div><strong>Idioma:</strong> Português</div>
+                <div><strong>Editora:</strong> Nordes Studio</div>
+            </div>
+        </div>
+
+        <div class="section-container">
+            <h2 class="section-title">Avaliações de Compradores</h2>
+            <div class="reviews-summary">
+                <div class="rating-score">
+                    <span class="score-value">4.9</span>
+                    <span class="score-max">/ 5</span>
+                </div>
+                <div class="rating-stars">★★★★★</div>
+                <p class="review-count">Baseado em 1.240 avaliações</p>
+            </div>
+            <div class="review-list">
+                <!-- Estrutura para Avaliações (Exemplo) -->
+                <div class="review-item">
+                    <p class="review-header">
+                        <span class="review-user">João S.</span>
+                        <span class="review-stars">★★★★★</span>
+                    </p>
+                    <p class="review-text">"Arte e história incríveis! Chegou super rápido e em perfeito estado. Recomendo a todos!"</p>
+                </div>
+                <div class="review-item">
+                    <p class="review-header">
+                        <span class="review-user">Maria L.</span>
+                        <span class="review-stars">★★★★☆</span>
+                    </p>
+                    <p class="review-text">"A história é ótima, mas a capa veio com um pequeno amassado. Tirando isso, perfeito."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<div class="notification" id="notification">Item adicionado ao carrinho!</div>
+
+
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+<script src="../assets/script-js/produto.js"></script>
+    <script src="../assets/script-js/smooth-scroll.js"></script>
+</body>
+</html>

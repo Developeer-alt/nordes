@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publique seu Livro - Nordes Studio</title>
+<link rel="stylesheet" href="../assets/global/global.css">
+     <link rel="shortcut icon" href="../assets/images/icons/fav.png" type="image/x-icon" />
+    <style>
+        :root {
+            --primary-accent: #009FFF;
+            --secondary-accent: #00d4ff;
+            --text-light: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --bg-dark: #000C1E;
+            --bg-darker: #030013;
+            --card-bg: rgba(42, 47, 74, 0.3);
+            --border-color: rgba(0, 212, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background: var(--bg-darker);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 12, 30, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.8rem 5%;
+            min-height: 65px;
+            display: flex;
+            align-items: center;
+        }
+
+        nav {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 45px;
+            width: 45px;
+        }
+
+        .logo-text {
+            font-weight: 900;
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, #fff, var(--primary-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-actions a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-left: 1.5rem;
+        }
+
+        .publish-container {
+            max-width: 1000px;
+            margin: 120px auto 60px;
+            padding: 0 5%;
+        }
+
+        .publish-hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(0, 159, 255, 0.1), rgba(0, 212, 255, 0.05));
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(5px);
+        }
+
+        .publish-hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff, var(--primary-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .step-card {
+            background: var(--card-bg);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .step-card:hover {
+            border-color: var(--primary-accent);
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            color: #fff;
+            box-shadow: 0 5px 15px rgba(0, 159, 255, 0.4);
+        }
+
+        .submission-form {
+            background: var(--card-bg);
+            padding: 3.5rem;
+            border-radius: 25px;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-weight: 800;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            margin-top: 1rem;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 10px 25px rgba(0, 159, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 600px) {
+            .form-row { grid-template-columns: 1fr; }
+            .publish-hero h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="home.html" class="logo">
+            <img src="../assets/images/icons/logo.png" alt="Nordes Studio">
+            <span class="logo-text">NORDES STUDIO</span>
+        </a>
+        <div class="nav-actions">
+            <a href="sobre.html">Sobre</a>
+            <a href="contato.html">Contato</a>
+        </div>
+    </nav>
+</header>
+
+<main class="publish-container">
+    <div class="publish-hero">
+        <h1>Transforme seu sonho em realidade</h1>
+        <p style="font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 0 auto;">A Nordes Studio está sempre em busca de novas histórias e talentos. Queremos ser a casa da sua próxima grande obra.</p>
+    </div>
+
+    <div class="steps-grid">
+        <div class="step-card">
+            <div class="step-number">1</div>
+            <h3>Submissão</h3>
+            <p style="color: var(--text-muted); margin-top: 1rem;">Envie sua sinopse e os primeiros capítulos para nossa equipe editorial.</p>
+        </div>
+        <div class="step-card">
+            <div class="step-number">2</div>
+            <h3>Avaliação</h3>
+            <p style="color: var(--text-muted); margin-top: 1rem;">Nossos editores analisarão o potencial da sua obra e o alinhamento com nosso catálogo.</p>
+        </div>
+        <div class="step-card">
+            <div class="step-number">3</div>
+            <h3>Publicação</h3>
+            <p style="color: var(--text-muted); margin-top: 1rem;">Se aprovado, cuidaremos de todo o processo: edição, design, impressão e distribuição.</p>
+        </div>
+    </div>
+
+    <div class="submission-form">
+        <h2 style="text-align: center; margin-bottom: 2.5rem; font-size: 2rem;">Envie seu Original</h2>
+        <form id="publish-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="author-name">Nome do Autor</label>
+                    <input type="text" id="author-name" placeholder="Seu nome completo" required>
+                </div>
+                <div class="form-group">
+                    <label for="author-email">E-mail de Contato</label>
+                    <input type="email" id="author-email" placeholder="seu@email.com" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="book-title">Título da Obra</label>
+                <input type="text" id="book-title" placeholder="Título provisório" required>
+            </div>
+            <div class="form-group">
+                <label for="genre">Gênero</label>
+                <select id="genre">
+                    <option value="manga">Mangá</option>
+                    <option value="light-novel">Light Novel</option>
+                    <option value="romance">Romance</option>
+                    <option value="fantasia">Fantasia / Ficção</option>
+                    <option value="outro">Outro</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="synopsis">Sinopse</label>
+                <textarea id="synopsis" rows="6" placeholder="Conte-nos resumidamente sobre sua história..." required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="file">Arquivo do Original (PDF/DOCX)</label>
+                <input type="file" id="file" accept=".pdf,.docx" style="padding: 0.5rem 0;">
+                <p style="font-size: 0.8rem; color: var(--text-muted);">Envie pelo menos os 3 primeiros capítulos.</p>
+            </div>
+            <button type="submit" class="btn-primary" id="submit-btn">Enviar para Avaliação</button>
+        </form>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2025 Nordes Studio. Todos os direitos reservados.</p>
+</footer>
+
+<script>
+    document.getElementById('publish-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = document.getElementById('submit-btn');
+        btn.disabled = true;
+        btn.innerText = 'Enviando...';
+
+        try {
+            // Integração com backend (simulada)
+            // No futuro: const response = await fetch('/api/books', { method: 'POST', body: new FormData(e.target) });
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            
+            alert('Original enviado com sucesso! Nossa equipe entrará em contato em até 15 dias úteis.');
+            e.target.reset();
+        } catch (error) {
+            alert('Erro ao enviar. Tente novamente.');
+        } finally {
+            btn.disabled = false;
+            btn.innerText = 'Enviar para Avaliação';
+        }
+    });
+</script>
+</body>
+</html>

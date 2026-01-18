@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Nordes Studio</title>
+    <link rel="stylesheet" href="../assets/style/log.css">
+    <link rel="stylesheet" href="../assets/global/global.css">
+     <link rel="shortcut icon" href="../assets/images/icons/fav.png" type="image/x-icon" />
+</head>
+<body>
+<header>
+    <nav>
+        <a href="home.html" class="logo">
+            <img src="../assets/images/icons/logo.png" alt="Nordes Studio">
+            <span class="logo-text">NORDES STUDIO</span>
+        </a>
+        <div class="nav-actions">
+            <a href="home.html">Voltar</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div class="auth-container">
+        <!-- SEÇÃO DE LOGIN -->
+        <div class="form-section active" id="login-section">
+            <div class="auth-header">
+                <h1>Bem-vindo</h1>
+                <p>Entre na sua conta Nordes Studio</p>
+            </div>
+
+            <div class="social-buttons">
+                <button class="btn btn-social" id="google-login">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    </svg>
+                    Google
+                </button>
+                <button class="btn btn-social" id="microsoft-login">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <rect x="1" y="1" width="9" height="9" fill="#F25022"/>
+                        <rect x="12" y="1" width="11" height="9" fill="#7FBA00"/>
+                        <rect x="1" y="12" width="9" height="11" fill="#00A4EF"/>
+                        <rect x="12" y="12" width="11" height="11" fill="#FFB900"/>
+                    </svg>
+                    Microsoft
+                </button>
+            </div>
+
+            <div class="divider"><span>OU</span></div>
+
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" name="email" placeholder="seu@email.com" required>
+                    <div class="error-message" id="login-email-error"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="login-password">Senha</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="login-password" name="password" placeholder="Sua senha" required>
+                        <button type="button" class="password-toggle" onclick="togglePassword('login-password')">👁️</button>
+                    </div>
+                    <div class="error-message" id="login-password-error"></div>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="remember-me" name="remember">
+                    <label for="remember-me">Lembrar-me</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary" id="login-btn">Entrar</button>
+            </form>
+
+            <div class="auth-toggle">
+                Não tem conta? <a href="#" onclick="toggleAuthMode(event)">Criar conta</a>
+            </div>
+        </div>
+
+        <!-- SEÇÃO DE CADASTRO -->
+        <div class="form-section" id="signup-section">
+            <div class="auth-header">
+                <h1>Criar Conta</h1>
+                <p>Junte-se à comunidade Nordes Studio</p>
+            </div>
+
+            <div class="social-buttons">
+                <button class="btn btn-social" id="google-signup">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    </svg>
+                    Google
+                </button>
+                <button class="btn btn-social" id="microsoft-signup">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <rect x="1" y="1" width="9" height="9" fill="#F25022"/>
+                        <rect x="12" y="1" width="11" height="9" fill="#7FBA00"/>
+                        <rect x="1" y="12" width="9" height="11" fill="#00A4EF"/>
+                        <rect x="12" y="12" width="11" height="11" fill="#FFB900"/>
+                    </svg>
+                    Microsoft
+                </button>
+            </div>
+
+            <div class="divider"><span>OU</span></div>
+
+            <form id="signup-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="signup-firstname">Nome</label>
+                        <input type="text" id="signup-firstname" name="firstname" placeholder="Seu nome" required>
+                        <div class="error-message" id="signup-firstname-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-lastname">Sobrenome</label>
+                        <input type="text" id="signup-lastname" name="lastname" placeholder="Seu sobrenome" required>
+                        <div class="error-message" id="signup-lastname-error"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" name="email" placeholder="seu@email.com" required>
+                    <div class="error-message" id="signup-email-error"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="signup-phone">Telefone (Opcional)</label>
+                    <input type="tel" id="signup-phone" name="phone" placeholder="(00) 0 0000-0000">
+                    <div class="error-message" id="signup-phone-error"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="signup-password">Senha</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="signup-password" name="password" placeholder="Sua senha" required>
+                        <button type="button" class="password-toggle" onclick="togglePassword('signup-password')">👁️</button>
+                    </div>
+                    <div class="error-message" id="signup-password-error"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="signup-confirm">Confirmar Senha</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="signup-confirm" name="confirm" placeholder="Confirme sua senha" required>
+                        <button type="button" class="password-toggle" onclick="togglePassword('signup-confirm')">👁️</button>
+                    </div>
+                    <div class="error-message" id="signup-confirm-error"></div>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">Concordo com os <a href="termos-de-uso.html" style="color: var(--primary-accent); text-decoration: none;">Termos de Uso</a></label>
+                </div>
+
+                <button type="submit" class="btn btn-primary" id="signup-btn">Criar Conta</button>
+            </form>
+
+            <div class="auth-toggle">
+                Já tem conta? <a href="#" onclick="toggleAuthMode(event)">Entrar</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2026 Nordes Studio - Todos os direitos reservados</p>
+</footer>
+
+
+<script src="../assets/script/log.js"></script>
+    <script src="../assets/global/scroll.js"></script>
+</body>
+</html>
