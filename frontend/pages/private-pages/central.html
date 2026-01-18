@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central de Administração - Nordes Studio</title>
+        <link rel="stylesheet" href="../../assets/style/central.css">
+    <link rel="stylesheet" href="../../assets/global/scroll.css">
+    <link rel="stylesheet" href="../../assets/global/global.css">
+</head>
+<body>
+
+<header>
+<a href="../home.html" class="logo">
+        <img src="../../assets/images/icons/logo.png" alt="Nordes">
+        <span>Nordes Studio</span>
+    </a>
+
+    <nav>
+        <a href="central.html" class="active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                <span>Central</span>
+            </a>
+            
+          </a>
+                <a href="db_manager.html">
+    <svg viewBox="0 0 24 24">
+        <path d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4zm8 6c0 2.21-3.58 4-8 4s-8-1.79-8-4v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9zm0 5c0 2.21-3.58 4-8 4s-8-1.79-8-4v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3z"/>
+    </svg>
+    <span>DB Manager</span>
+</a>
+            </a>
+        <a href="adm.html" >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="status.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+            <span>Status</span>
+        </a>
+
+        <a href="home-adm.html" class="logout">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <polyline points="16 17 21 12 16 7"></polyline>
+                <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+            <span>Sair</span>
+        </a>
+    </nav>
+</header>
+
+<main>
+    <div class="central-container">
+        <div class="central-header">
+            <h1>Painel Central</h1>
+            <p style="color: var(--text-muted);">Acesso rápido às ferramentas administrativas</p>
+        </div>
+
+        <div class="central-list">
+            <!-- Funções em ordem alfabética -->
+            <a href="adm.html" class="central-btn">
+                <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                <div class="central-btn-content">
+                    <span>Admin</span>
+                    <small>Gerenciamento de produtos e estoque</small>
+                </div>
+            </a>
+            <a href="control.html" class="central-btn">
+                <svg viewBox="0 0 24 24"><path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"/></svg>
+                <div class="central-btn-content">
+                    <span>Control</span>
+                    <small>Configurações e controle do sistema</small>
+                </div>
+            </a>
+            <a href="db_manager.html" class="central-btn">
+                            <svg viewBox="0 0 24 24">
+                    <path d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4zm8 6c0 2.21-3.58 4-8 4s-8-1.79-8-4v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9zm0 5c0 2.21-3.58 4-8 4s-8-1.79-8-4v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3z"/>
+                </svg>
+                <div class="central-btn-content">
+                    <span>DB Manager</span>
+                    <small>Backups e snapshots do banco de dados</small>
+                </div>
+            </a>
+            <a href="status.html" class="central-btn">
+                <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <div class="central-btn-content">
+                    <span>Status</span>
+                    <small>Monitoramento de integridade do sistema</small>
+                </div>
+            </a>
+        </div>
+
+        <div class="password-section">
+            <h2>
+                <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: var(--secondary-accent);"><path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>
+                Alterar Senha de Acesso
+            </h2>
+            <form class="password-form" id="password-form">
+                <div class="input-group">
+                    <label for="old-password">Senha Atual</label>
+                    <input type="password" id="old-password" maxlength="6" placeholder="******" required>
+                </div>
+                <div class="input-group">
+                    <label for="new-password">Nova Senha (6 números)</label>
+                    <input type="password" id="new-password" maxlength="6" placeholder="******" required>
+                </div>
+                <div class="input-group">
+                    <label for="confirm-password">Confirmar Nova Senha</label>
+                    <input type="password" id="confirm-password" maxlength="6" placeholder="******" required>
+                </div>
+                <button type="submit" class="btn-save">Salvar Nova Senha</button>
+                <div id="form-message" class="message"></div>
+            </form>
+        </div>
+    </div>
+</main>
+<script src="../../assets/script/central.js"></script>
+
+</body>
+</html>
