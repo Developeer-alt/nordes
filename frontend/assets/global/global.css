@@ -1,0 +1,21 @@
+ /* ESCALA GLOBAL */
+        html {
+            font-size: 14.4px; /* 90% de 16px */
+            
+        }
+
+        /* AJUSTE MOBILE ESTILO MERCADO LIVRE (MENOS ZOOM) */
+        @media (max-width: 768px) {
+            html {
+                font-size: 12px; /* Redução adicional para mobile */
+            }
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-darker);
+            color: var(--text-light);
+            line-height: 1.6; /* Aumenta o line-height para melhor legibilidade */
+            overflow-x: hidden;
+            user-select: none; /* impede seleção de texto */
+}
