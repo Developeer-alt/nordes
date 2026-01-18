@@ -63,12 +63,12 @@ def get_books():
     books = Book.query.all()
     return jsonify([book.to_dict() for book in books])
 
-@app.route('/api/books/<int:id>', methods=['GET'])
+@app.route('https://nordes.onrender.com/api/books/<int:id>', methods=['GET'])
 def get_book(id):
     book = Book.query.get_or_404(id)
     return jsonify(book.to_dict())
 
-@app.route('/api/books', methods=['POST'])
+@app.route('https://nordes.onrender.com/api/books', methods=['POST'])
 def add_book():
     data = request.form
     file = request.files.get('image')
@@ -93,7 +93,7 @@ def add_book():
     db.session.commit()
     return jsonify({"message": "Livro adicionado com sucesso!", "book": new_book.to_dict()}), 201
 
-@app.route('/api/books/<int:id>', methods=['PUT'])
+@app.route('https://nordes.onrender.com/api/books/<int:id>', methods=['PUT'])
 def update_book(id):
     book = Book.query.get_or_404(id)
     data = request.form
@@ -115,7 +115,7 @@ def update_book(id):
     db.session.commit()
     return jsonify({"message": "Livro atualizado com sucesso!", "book": book.to_dict()})
 
-@app.route('/api/books/<int:id>', methods=['DELETE'])
+@app.route('https://nordes.onrender.com/api/books/<int:id>', methods=['DELETE'])
 def delete_book(id):
     book = Book.query.get_or_404(id)
     db.session.delete(book)
