@@ -58,7 +58,7 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 # Rotas API
-@app.route('/api/books', methods=['GET'])
+@app.route('https://nordes.onrender.com/api/books', methods=['GET'])
 def get_books():
     books = Book.query.all()
     return jsonify([book.to_dict() for book in books])
